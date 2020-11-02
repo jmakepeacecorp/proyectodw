@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ProyectoFinalDesarrollo.Models.EVentaModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Agregar">Crear Venta</a> |
+    <a asp-action="AgregarNC">Crear Nota de Credito</a> |
+    <a asp-action="AgregarDEV">Crear Devolucion</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoDocumento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoDocumento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                <a asp-action="Editar" asp-route-id="@item.CodigoEVenta">Editar</a> |
+                <a asp-action="Detalles" asp-route-id="@item.CodigoEVenta">Detalles</a> |
+                <a asp-action="Eliminar" asp-route-id="@item.CodigoEVenta">Eliminar</a> |
+                <a asp-action="Anular" asp-route-id="@item.CodigoEVenta">Anular</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

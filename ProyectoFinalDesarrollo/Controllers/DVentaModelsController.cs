@@ -20,13 +20,13 @@ namespace ProyectoFinalDesarrollo.Controllers
         }
 
         // GET: DVentaModels
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            return View(await _context.tbl_DVentaModel.ToListAsync());
+            return View(await _context.tbl_DVentaModel.Where(m => m.CodigoEVenta == id).ToListAsync());
         }
 
-        // GET: DVentaModels/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: DVentaModels/Detallesp/5
+        public async Task<IActionResult> Detallesp(int? id)
         {
             if (id == null)
             {
@@ -43,30 +43,40 @@ namespace ProyectoFinalDesarrollo.Controllers
             return View(dVentaModel);
         }
 
-        // GET: DVentaModels/Create
-        public IActionResult Create()
+        // GET: DVentaModels/Agregarp
+        public IActionResult Agregarp()
         {
+            //return View();
+            var list = _context.tbl_ProductosModel.ToList();
+            ViewBag.CodigoProducto = new SelectList(list, "CodigoProducto", "Descripcion");
             return View();
         }
 
-        // POST: DVentaModels/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        [Route("/Index/{id?}")]
+        public IActionResult ToAction(int id)
+        {
+            return View("Index", id);
+        }
+
+        // POST: DVentaModels/Agregarp
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoDVenta,CodigoEVenta,CodigoProducto,Cantidad,ValorUnitario,ValorTotal")] DVentaModel dVentaModel)
+        public async Task<IActionResult> Agregarp([Bind("CodigoDVenta,CodigoEVenta,CodigoProducto,Cantidad,ValorUnitario,ValorTotal")] DVentaModel dVentaModel)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(dVentaModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //ControllerContext.RouteData.Values.Add("id", dVentaModel.CodigoEVenta);
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index),new { Id= dVentaModel.CodigoEVenta});
             }
             return View(dVentaModel);
         }
 
-        // GET: DVentaModels/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: DVentaModels/Editarp/5
+        public async Task<IActionResult> Editarp(int? id)
         {
             if (id == null)
             {
@@ -81,12 +91,10 @@ namespace ProyectoFinalDesarrollo.Controllers
             return View(dVentaModel);
         }
 
-        // POST: DVentaModels/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: DVentaModels/Editarp/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CodigoDVenta,CodigoEVenta,CodigoProducto,Cantidad,ValorUnitario,ValorTotal")] DVentaModel dVentaModel)
+        public async Task<IActionResult> Editarp(int id, [Bind("CodigoDVenta,CodigoEVenta,CodigoProducto,Cantidad,ValorUnitario,ValorTotal")] DVentaModel dVentaModel)
         {
             if (id != dVentaModel.CodigoDVenta)
             {
@@ -116,8 +124,8 @@ namespace ProyectoFinalDesarrollo.Controllers
             return View(dVentaModel);
         }
 
-        // GET: DVentaModels/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: DVentaModels/Eliminarp/5
+        public async Task<IActionResult> Eliminarp(int? id)
         {
             if (id == null)
             {
@@ -134,8 +142,8 @@ namespace ProyectoFinalDesarrollo.Controllers
             return View(dVentaModel);
         }
 
-        // POST: DVentaModels/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: DVentaModels/Eliminarp/5
+        [HttpPost, ActionName("Eliminarp")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

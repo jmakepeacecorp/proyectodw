@@ -51,8 +51,53 @@ namespace ProyectoFinalDesarrollo.Controllers
             }
             var nRegistroEVentaDTO = _mapper.Map<EVentaModelDTO>(nRegistroEVenta);
             return Ok(nRegistroEVentaDTO);
-       
         }
+
+        [HttpGet("cliente/{nCodigoCliente:int}", Name = "ListaEVentaByCodigoC")]
+        public IActionResult ListaEVentaByCodigoC(int nCodigoCliente)
+        {
+
+            var nListaEVenta = _ctEVenta.GetEVentaModels();
+            //Aplicando DTO
+            var nListaEVentaDTO = new List<EVentaModelDTO>();
+            foreach (var vLista in nListaEVenta)
+            {
+                nListaEVentaDTO.Add(_mapper.Map<EVentaModelDTO>(vLista));
+            }
+            //return Ok(nListaEVenta);
+            return Ok(nListaEVentaDTO.Where(m => m.CodigoCliente == nCodigoCliente).ToList());
+        }
+
+        [HttpGet("tipo/{nCodigoTipo:int}", Name = "ListaEVentaByTipo")]
+        public IActionResult ListaEVentaByTipo(int nCodigoTipo)
+        {
+
+            var nListaEVenta = _ctEVenta.GetEVentaModels();
+            //Aplicando DTO
+            var nListaEVentaDTO = new List<EVentaModelDTO>();
+            foreach (var vLista in nListaEVenta)
+            {
+                nListaEVentaDTO.Add(_mapper.Map<EVentaModelDTO>(vLista));
+            }
+            //return Ok(nListaEVenta);
+            return Ok(nListaEVentaDTO.Where(m => m.TipoDocumento == nCodigoTipo).ToList());
+        }
+
+        [HttpGet("estado/{nCodigoEstado:int}", Name = "ListaEVentaByEstado")]
+        public IActionResult ListaEVentaByEstado(int nCodigoEstado)
+        {
+
+            var nListaEVenta = _ctEVenta.GetEVentaModels();
+            //Aplicando DTO
+            var nListaEVentaDTO = new List<EVentaModelDTO>();
+            foreach (var vLista in nListaEVenta)
+            {
+                nListaEVentaDTO.Add(_mapper.Map<EVentaModelDTO>(vLista));
+            }
+            //return Ok(nListaEVenta);
+            return Ok(nListaEVentaDTO.Where(m => m.Estado == nCodigoEstado).ToList());
+        }
+
 
         [HttpPost]
         public IActionResult CrearEVenta([FromBody] EVentaModelSaveDTO ventaDTO) {

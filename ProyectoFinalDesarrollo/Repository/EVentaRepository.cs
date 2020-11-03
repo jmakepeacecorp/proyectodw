@@ -47,15 +47,28 @@ namespace ProyectoFinalDesarrollo.Repository
             return _db.tbl_EVentaModel.FirstOrDefault(p => p.CodigoEVenta == CodigoVenta);
         }
 
-        public EVentaModel GetEVentaByNombreCliente(string NombreCliente)
+        public EVentaModel GetEVentaByCodigoC(int CodigoCliente)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return _db.tbl_EVentaModel.FirstOrDefault(p => p.CodigoCliente == CodigoCliente);
+        }
+
+        public EVentaModel GetEVentaByTipo(int CodigoTipo)
+        {
+            //throw new NotImplementedException();
+            return _db.tbl_EVentaModel.FirstOrDefault(p => p.TipoDocumento == CodigoTipo);
+        }
+
+        public EVentaModel GetEVentaByEstado(int CodigoEstado)
+        {
+            //throw new NotImplementedException();
+            return _db.tbl_EVentaModel.FirstOrDefault(p => p.Estado == CodigoEstado);
         }
 
         public ICollection<EVentaModel> GetEVentaModels()
         {
             //throw new NotImplementedException();
-            return _db.tbl_EVentaModel.OrderBy(p => p.CodigoCliente).ToList();
+            return _db.tbl_EVentaModel.OrderBy(p => p.CodigoEVenta).ToList();
         }
 
 

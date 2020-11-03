@@ -1,14 +1,13 @@
 ﻿@model ProyectoFinalDesarrollo.Models.DVentaModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Detalles Producto";
 }
 
-<h1>Delete</h1>
+<h1>Detalles - Detalles Producto</h1>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>DVentaModel</h4>
+    <h4>DVentaModel - Detalles Producto</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -42,10 +41,8 @@
             @Html.DisplayFor(model => model.ValorTotal)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="CodigoDVenta" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+</div>
+<div>
+    <a asp-action="Editarp" asp-route-id="@Model.CodigoDVenta">Editar</a> |
+    <a asp-action="Index">Regresar</a>
 </div>

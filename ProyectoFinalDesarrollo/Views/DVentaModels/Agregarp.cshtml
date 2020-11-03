@@ -1,27 +1,26 @@
 ﻿@model ProyectoFinalDesarrollo.Models.DVentaModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Agregar Producto";
 }
 
-<h1>Edit</h1>
+<h1>Agregar - Producto</h1>
 
-<h4>DVentaModel</h4>
+<h4>DVentaModel - Agregar Producto</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Agregarp">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="CodigoDVenta" />
             <div class="form-group">
                 <label asp-for="CodigoEVenta" class="control-label"></label>
-                <input asp-for="CodigoEVenta" class="form-control" />
+                <input asp-for="CodigoEVenta" class="form-control" data-val="@Context.Request.RouteValues["id"]" value="@Context.Request.RouteValues["id"]" />
                 <span asp-validation-for="CodigoEVenta" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CodigoProducto" class="control-label"></label>
-                <input asp-for="CodigoProducto" class="form-control" />
-                <span asp-validation-for="CodigoProducto" class="text-danger"></span>
+                @Html.LabelFor(model => model.CodigoProducto, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("CodigoProducto", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CodigoProducto, "", new { @class = "text-danger" })
             </div>
             <div class="form-group">
                 <label asp-for="Cantidad" class="control-label"></label>
@@ -39,14 +38,14 @@
                 <span asp-validation-for="ValorTotal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Agregar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" asp-route-id="@Context.Request.RouteValues["id"]">Regresar</a>
 </div>
 
 @section Scripts {

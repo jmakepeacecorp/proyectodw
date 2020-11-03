@@ -1,17 +1,18 @@
 ﻿@model ProyectoFinalDesarrollo.Models.DVentaModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Editar Producto";
 }
 
-<h1>Create</h1>
+<h1>Editar - Producto</h1>
 
-<h4>DVentaModel</h4>
+<h4>DVentaModel - Editar Producto</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Editarp">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CodigoDVenta" />
             <div class="form-group">
                 <label asp-for="CodigoEVenta" class="control-label"></label>
                 <input asp-for="CodigoEVenta" class="form-control" />
@@ -38,14 +39,14 @@
                 <span asp-validation-for="ValorTotal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" asp-route-id="@Context.Request.RouteValues["id"]">Regresar</a>
 </div>
 
 @section Scripts {

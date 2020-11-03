@@ -11,7 +11,9 @@ namespace ProyectoFinalDesarrollo.Repository.iRepository
         //Definir todos los metodos para recibir la API
         ICollection<EVentaModel>GetEVentaModels(); //devuelve un listado de EVenta
         EVentaModel GetEVentaByCodigo(int CodigoVenta);
-        EVentaModel GetEVentaByNombreCliente(string NombreCliente);
+        EVentaModel GetEVentaByCodigoC(int CodigoCliente);
+        EVentaModel GetEVentaByTipo(int CodigoTipo);
+        EVentaModel GetEVentaByEstado(int CodigoEstado);
         bool CreaEVenta(EVentaModel eVenta);
         bool ActualizaEVenta(EVentaModel eVenta);
         bool BorraEVenta(EVentaModel eVenta);

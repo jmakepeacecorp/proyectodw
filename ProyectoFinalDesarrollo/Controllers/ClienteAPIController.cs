@@ -52,7 +52,7 @@ namespace ProyectoFinalDesarrollo.Controllers
         }
 
         [HttpGet("nombre/{nNombreCliente:string}", Name = "GetClientesNombre")]
-        public IActionResult GetClientesNombre(int nNombreCliente)
+        public IActionResult GetClientesNombre(string nNombreCliente)
         {
 
             var nListaCliente = _ctCliente.GetClientesModel();
@@ -63,11 +63,11 @@ namespace ProyectoFinalDesarrollo.Controllers
                 nListaClienteDTO.Add(_mapper.Map<ClienteModelDTO>(vLista));
             }
             //return Ok(nListaEVenta);
-            return Ok(nListaClienteDTO.Where(m => m.CodigoCliente == nNombreCliente).ToList());
+            return Ok(nListaClienteDTO.Where(m => m.CodigoCliente.Equals(nNombreCliente)).ToList());
         }
 
         [HttpGet("apellido/{nApellidoCliente:string}", Name = "GetClientesApellido")]
-        public IActionResult GetClientesApellido(int nApellidoCliente)
+        public IActionResult GetClientesApellido(string nApellidoCliente)
         {
 
             var nListaCliente = _ctCliente.GetClientesModel();
@@ -78,11 +78,11 @@ namespace ProyectoFinalDesarrollo.Controllers
                 nListaClienteDTO.Add(_mapper.Map<ClienteModelDTO>(vLista));
             }
             //return Ok(nListaEVenta);
-            return Ok(nListaClienteDTO.Where(m => m.ApellidoCliente == nApellidoCliente).ToList());
+            return Ok(nListaClienteDTO.Where(m => m.ApellidoCliente.Equals(nApellidoCliente)).ToList());
         }
 
         [HttpGet("nit/{nNit:string}", Name = "GetClientesNit")]
-        public IActionResult GetClientesNit(int nNit)
+        public IActionResult GetClientesNit(string nNit)
         {
 
             var nListaCliente = _ctCliente.GetClientesModel();
@@ -93,7 +93,7 @@ namespace ProyectoFinalDesarrollo.Controllers
                 nListaClienteDTO.Add(_mapper.Map<ClienteModelDTO>(vLista));
             }
             //return Ok(nListaEVenta);
-            return Ok(nListaClienteDTO.Where(m => m.Nit == nNit).ToList());
+            return Ok(nListaClienteDTO.Where(m => m.Nit.Equals(nNit)).ToList());
         }
 
 

@@ -7,7 +7,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using AutoMapper;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace ProyectoFinalDesarrollo.Mapper
 {
@@ -17,7 +16,7 @@ namespace ProyectoFinalDesarrollo.Mapper
 
         public ProductoMappers()
         {
-            CreateMap<ProductosModel, ProductoAgregar>().ReverseMap();
+            CreateMap<ProductosModel, ProductoDTO>().ReverseMap();
         }
     }
 }

@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProyectoFinalDesarrollo.Connection;
+using ProyectoFinalDesarrollo.Mapper;
 using ProyectoFinalDesarrollo.Mappers;
 using ProyectoFinalDesarrollo.Repository;
 using ProyectoFinalDesarrollo.Repository.iRepository;
@@ -31,8 +32,12 @@ namespace ProyectoFinalDesarrollo
         {
             services.AddDbContext<conn>(Options => Options.UseSqlServer(Configuration.GetConnectionString("ConnDBSQL")));
             services.AddScoped<iEVentaRepository, EVentaRepository>();
+            services.AddScoped<iClienteRepository, ClienteRepository>();
+            services.AddScoped<iProductoRepository, ProductoRepository>();
             //AutoMapper, para crear la relación entre Modelos y DTOs
             services.AddAutoMapper (typeof(EVentaMappers));
+            services.AddAutoMapper(typeof(ClienteMappers));
+            services.AddAutoMapper(typeof(ProductoMappers));
             services.AddControllersWithViews();
         }
 

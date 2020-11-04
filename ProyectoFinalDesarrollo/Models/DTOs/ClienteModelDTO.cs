@@ -13,19 +13,19 @@ namespace ProyectoFinalDesarrollo.Models.DTOs
 
         [Required]
         [Display(Name = "NombreCliente")] //etiqueta
-        public int NombreCliente { get; set; }
+        public string NombreCliente { get; set; }
 
         [Required]
         [Display(Name = "ApellidoCliente")] //etiqueta
-        public int ApellidoCliente { get; set; }
+        public string ApellidoCliente { get; set; }
 
         [Required]
         [Display(Name = "Nit")] //etiqueta
-        public int Nit { get; set; }
+        public string Nit { get; set; }
 
         [Required]
         [Display(Name = "Direccion")] //etiqueta
-        public int Direccion { get; set; }
+        public string Direccion { get; set; }
 
         [Required]
         [Display(Name = "CategoriaCliente")] //etiqueta

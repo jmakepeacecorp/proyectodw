@@ -19,7 +19,7 @@ namespace ProyectoFinalDesarrollo.Controllers
         private readonly iProductoRepository _ctProductos;
         private readonly IMapper _mapper;
 
-        private ProductoControllerAPI(iProductoRepository ctoProductos, IMapper mapper)
+        public ProductoControllerAPI(iProductoRepository ctoProductos, IMapper mapper)
         {
             _ctProductos = ctoProductos;
             _mapper = mapper;

@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace ProyectoFinalDesarrollo.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Cliente")]
     [ApiController]
     public class ClienteAPIController : ControllerBase
     {
@@ -51,7 +51,7 @@ namespace ProyectoFinalDesarrollo.Controllers
             return Ok(nRegistroClienteDTO);
         }
 
-        [HttpGet("nombre/{nNombreCliente:string}", Name = "GetClientesNombre")]
+        [HttpGet("nombre/{nNombreCliente}", Name = "GetClientesNombre")]
         public IActionResult GetClientesNombre(string nNombreCliente)
         {
 
@@ -63,10 +63,10 @@ namespace ProyectoFinalDesarrollo.Controllers
                 nListaClienteDTO.Add(_mapper.Map<ClienteModelDTO>(vLista));
             }
             //return Ok(nListaEVenta);
-            return Ok(nListaClienteDTO.Where(m => m.CodigoCliente.Equals(nNombreCliente)).ToList());
+            return Ok(nListaClienteDTO.Where(m => m.NombreCliente.Equals(nNombreCliente)).ToList());
         }
 
-        [HttpGet("apellido/{nApellidoCliente:string}", Name = "GetClientesApellido")]
+        [HttpGet("apellido/{nApellidoCliente}", Name = "GetClientesApellido")]
         public IActionResult GetClientesApellido(string nApellidoCliente)
         {
 
@@ -81,7 +81,7 @@ namespace ProyectoFinalDesarrollo.Controllers
             return Ok(nListaClienteDTO.Where(m => m.ApellidoCliente.Equals(nApellidoCliente)).ToList());
         }
 
-        [HttpGet("nit/{nNit:string}", Name = "GetClientesNit")]
+        [HttpGet("nit/{nNit}", Name = "GetClientesNit")]
         public IActionResult GetClientesNit(string nNit)
         {
 
@@ -114,7 +114,7 @@ namespace ProyectoFinalDesarrollo.Controllers
                 return StatusCode(500, ModelState);
             }
 
-            return CreatedAtRoute("GetClientesCodigo", new { nCodigoVenta = clienteDTO.CodigoCliente }, Cliente); //se retorna el registro creado
+            return CreatedAtRoute("GetClientesCodigo", new { nCodigoCliente = clienteDTO.CodigoCliente }, Cliente); //se retorna el registro creado
         }
 
         [HttpPatch("{nCodigoCliente:int}", Name = "GetClientesCodigo")]

@@ -41,7 +41,7 @@ namespace ProyectoFinalDesarrollo.Repository
         public ClientesModel GetClientesApellido(string ApellidoCliente)
         {
             //throw new NotImplementedException();
-            return _db.tbl_ClientesModel.FirstOrDefault(p => p.ApellidoCliente == ApellidoCliente);
+            return _db.tbl_ClientesModel.FirstOrDefault(p => p.ApellidoCliente.Equals(ApellidoCliente));
         }
 
         public ClientesModel GetClientesCategoria(int CategoriaCliente)
@@ -65,13 +65,13 @@ namespace ProyectoFinalDesarrollo.Repository
         public ClientesModel GetClientesNit(string Nit)
         {
             //throw new NotImplementedException();
-            return _db.tbl_ClientesModel.FirstOrDefault(p => p.Nit == Nit);
+            return _db.tbl_ClientesModel.FirstOrDefault(p => p.Nit.Equals(Nit));
         }
 
         public ClientesModel GetClientesNombre(string NombreCliente)
         {
             //throw new NotImplementedException();
-            return _db.tbl_ClientesModel.FirstOrDefault(p => p.NombreCliente == NombreCliente);
+            return _db.tbl_ClientesModel.FirstOrDefault(p => p.NombreCliente.Equals(NombreCliente));
         }
 
         public bool GuardaCliente()

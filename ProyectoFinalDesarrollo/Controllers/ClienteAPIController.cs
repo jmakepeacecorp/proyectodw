@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoFinalDesarrollo.Models;
 using ProyectoFinalDesarrollo.Models.DTOs;
 using ProyectoFinalDesarrollo.Repository.iRepository;
+using System.Collections.Generic;
+using System.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -83,7 +81,7 @@ namespace ProyectoFinalDesarrollo.Controllers
             return Ok(nListaClienteDTO.Where(m => m.ApellidoCliente == nApellidoCliente).ToList());
         }
 
-        [HttpGet("Nit/{nNit:string}", Name = "GetClientesNit")]
+        [HttpGet("nit/{nNit:string}", Name = "GetClientesNit")]
         public IActionResult GetClientesNit(int nNit)
         {
 
@@ -129,7 +127,7 @@ namespace ProyectoFinalDesarrollo.Controllers
 
             var clientes = _mapper.Map<ClientesModel>(clienteDTO);
 
-            if (!_ctCliente.ActualizarCliente(clienteDTO))  //ActualizaEVenta es un metodo del Repository
+            if (!_ctCliente.ActualizarCliente(clientes))  //ActualizaEVenta es un metodo del Repository
             {
                 ModelState.AddModelError("", $"Ocurrio un error al actualizar el codigo { clientes.CodigoCliente}");
                 return StatusCode(500, ModelState);

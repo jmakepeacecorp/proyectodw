@@ -12,15 +12,13 @@ namespace ProyectoFinalDesarrollo.Repository.iRepository
         //Definir todos los metodos para recibir la API
         ICollection<ClientesModel> GetClientesModel(); //devuelve un listado de clientes
         ClientesModel GetClientesCodigo(int CodigoCliente);
-        ClientesModel GetClientesNombre(int NombreCliente);
-        ClientesModel GetClientesApellido(int ApellidoCliente);
-        ClientesModel GetClientesNit(int Nit);
-        ClientesModel GetClientesDireccion(int Direccion);
+        ClientesModel GetClientesNombre(string NombreCliente);
+        ClientesModel GetClientesApellido(string ApellidoCliente);
+        ClientesModel GetClientesNit(string Nit);
         ClientesModel GetClientesCategoria(int CategoriaCliente);
         bool CreaCliente(ClientesModel clientes);
         bool ActualizarCliente(ClientesModel clientes);
         bool BorrarCliente(ClientesModel clientes);
         bool GuardaCliente();
-        bool ActualizarCliente(ClienteModelDTO clienteDTO);
     }
 }
